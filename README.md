@@ -37,11 +37,17 @@ Find the best hyper paramter using k-fold cross validation or simple cross valid
 Use gridsearch cv or randomsearch cv or you can also write your own for loops to do this task of hyperparameter tuning
 
 Pertubation Test
+
 Get the weights W after fit your model with the data X i.e Train data.
+
 Add a noise to the X (X' = X + e) and get the new data set X' (if X is a sparse matrix, X.data+=e)
+
 Fit the model again on data X' and get the weights W'
+
 Add a small eps value(to eliminate the divisible by zero error) to W and W’ i.e W=W+10^-6 and W’ = W’+10^-6
+
 Now find the % change between W and W' (| (W-W') / (W) |)*100)
+
 Calculate the 0th, 10th, 20th, 30th, ...100th percentiles, and observe any sudden rise in the values of percentage_change_vector
 Ex: consider your 99th percentile is 1.3 and your 100th percentiles are 34.6, there is sudden rise from 1.3 to 34.6, now calculate the 99.1, 99.2, 99.3,..., 100th percentile values and get the proper value after which there is sudden rise the values, assume it is 2.5
 Print the feature names whose % change is more than a threshold x(in our example it's 2.5)
